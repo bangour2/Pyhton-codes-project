@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Edit Person</title>
+{% endblock %}
+
+{#
+        person list: ident, name, email
+#}
+
+{% block content %}
+    <h1>Edit Data for Person {{person[1]}}</h1>
+
+    <form action="SaveChanges.py" method="get">
+
+        <div class="data-grid">
+            <div>
+                <span>Ident</span>
+                <span>{{person[0]}}</span>
+            </div>
+            <div>
+                <span>Name</span>
+                <span>
+                    <input type="text" value="{{person[1]}}" name="person-name"/>
+                </span>
+            </div>
+            <div>
+                <span>Email Address</span>
+                <span>
+                    <input type="text" value="{{person[2]}}" name="person-email"/>
+                </span>
+            </div>
+        </div>
+
+        {#
+        {% if presidents %}
+            President of these clubs:
+            <ul>
+                {% for cl in presidents %}
+                <li>{{ cl[0] }} </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Is not a president of any club</p>
+        {% endif %}
+        #}
+
+        {#
+            Variable 'clubs' will be a list of clubs
+
+            Each club will be a list/tuple:
+                (ident, name, is-member, is-president)
+        #}
+        <h2>Club memberships</h2>
+
+        <div class="data-grid">
+            {% for club in clubs %}
+                <div>
+                    <span>{{club[1]}}</span>
+
+                    <span>
+                        {% if club[2] %}
+                            <input type="checkbox" value="{{club[0]}}" name="club-member" checked="1"/>
+                        {%else %}
+                            <input type="checkbox" value="{{club[0]}}" name="club-member"/>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <input type="hidden" value="{{person[0]}}" name="ident"/>
+
+        <p>
+            <input type="submit" value="Save Changes"/>
+        </p>
+    </form>
+
+{% endblock %}

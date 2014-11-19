@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% block title %}
+<title>Data for Person</title>
+{% endblock %}
+
+{% block content %}
+        <h1>Data for ID {{person[0]}}</h1>
+
+    <ul>
+        <li>
+            Identifier: {{ident}}
+        </li>
+        <li>
+            Email address: {{person[1]}}
+        </li>
+        <li>
+            {% if onePresident %}
+                President of {{ presidents[0][0] }}
+            {% elif presidents %}
+                President of these clubs:
+                <ul>
+                    {% for cl in presidents %}
+                    <li> {{ cl[0] }} </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                Is not a president of any club
+            {% endif %}
+        </li>
+        <li>
+            {% if oneMembership %}
+                Member of {{clubs[0][0]}}
+            {% elif clubs %}
+                Member of these clubs:
+                <ul>
+                    {% for cl in clubs %}
+                        <li>{{ cl[0] }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                Not a member of any clubs
+            {% endif %}
+        </li>
+    </ul>
+    <p>
+        <a href="EditPerson.py?ident={{ident}}">Edit This user's data</a>
+    </p>
+{% endblock %}

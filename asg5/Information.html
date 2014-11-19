@@ -1,0 +1,120 @@
+
+{% extends 'base.html' %}
+    {% block title %}
+    <title>Single Customer Information</title>
+    {% endblock %}
+
+    {% block content %}
+
+  <!--<td>  number </td>-->
+  <!--<td> Contact name </td>-->
+  <!--<td> Phone number </td>-->
+  <!--<td> Address </td>-->
+  <!--<td> Sales R. Full name </td>-->
+  <!--<td> order N </td>-->
+  <!--<td> order D </td>-->
+  <!--<td> T. value of order </td>-->
+  <!--<td> check number </td>-->
+  <!--<td> payment D </td>-->
+  <!--<td> Amount </td> </h1>-->
+
+        <h2>
+      <p><td><font color="blue">name: </font></td>
+     {% for cust in customername %}
+
+        {% if cust[0] == ' ' %}
+         <td>&nbsp</td>
+        {% endif %}
+
+        {% if cust[0] == '&' %}
+         <td>&</td>
+        {% endif %}
+
+        {% if cust[0] == '+' %}
+         <td>+</td>
+        {% endif %}
+
+
+    {{cust[0]}}
+     {% endfor %}</p>
+
+
+     {% for cust in customer_list_1 %}
+
+        {% if cust[4] == " " %}
+         <td>&nbsp</td>
+        {% endif %}
+
+        {% if cust[4] == " & " %}
+         <td>&</td>
+        {% endif %}
+
+        {% if cust[4] == "+ " %}
+         <td>+</td>
+        {% endif %}
+
+     <p><td><font color="blue">number: </font></td><td>{{cust[0]}}</td></p>
+     <p><td><font color="blue">contact name: </font></td> <td>{{cust[1]}} {{cust[2]}}</td></p>
+     <p><td><font color="blue">phone: </font></td><td>{{cust[3]}}</td></p>
+     <p><td><font color="blue">Address: </font></td><td>{{cust[4]}}</td></p>
+     {% endfor %}
+
+     <p><td><font color="blue">Sales representative full name:</font>
+      {% for cust in customer_list_2 %}
+     {{cust[0]}} {{cust[1]}}
+     {% endfor %}<td></td></p>
+
+
+     {% for cust in order_number %}
+     {% if cust[0] != None %}
+
+             <p><td><font color="blue">order number: </font>{{cust[0]}}</td></p>
+             <p><td><font color="blue">order date: </font>{{cust[1]}}</td></p>
+
+            {% for cust in order_List %}
+            <p><td><font color="blue">order value: </font>{{cust[0]}}</td></p>
+            {% endfor %}
+
+     {% else %}
+           <p><td><font color="red"> customer has made no orders</font></td></p>
+     {% endif %}
+     {%endfor%}
+
+
+     {% for cust in pay_list %}
+     {% if cust[0] != None %}
+
+             <p><td><font color="blue">check number: </font>{{cust[0]}}</td></p>
+             <p><td><font color="blue">payment date: </font>{{cust[1]}}</td></p>
+             <p><td><font color="blue">Amount: </font>{{cust[2]}}</td></p>
+
+     {% else %}
+           <p><font color="red"> customer has made no payments</font></p>
+     {% endif %}
+     {% endfor %}
+        </h2>
+
+  {% endblock %}
+
+         <!--<h2>-->
+     <!--{% for cust in customer_list_6%}-->
+     <!--{{cust[0]}}-->
+     <!--{% endfor %}-->
+         <!--</h2>-->
+
+
+ <!--
+ <table> <tr>
+    <td> {{customer_list_5[0]}} </td>
+    <td> customer_list_5[1] </td>
+    <td> customer_list_5[2] </td>
+    <td> customer_list_5[3] </td>
+    <td> customer_list_5[4] </td>
+    <td> customer_list_5[6] </td>
+    <td> customer_list_5[7] </td>
+    <td> customer_list_5[8] </td>
+    <td> Order_Made </td>
+    <td> customer_list_5[9] </td>
+    <td> customer_list_5[10] </td>
+    <td> customer_list_5[11] </td>
+</tr></table> -->

@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+    {% block title %}
+    <title>Error</title>
+    {% endblock %}
+
+    {% block content %}
+    <h1>Data Entry Error </h1>
+
+    <!-- generate the message
+        The messages will be in a list of strings with the key 'messages'
+    -->
+    <ul>
+    {% for msg in messages %}
+        <li class="error"> {{msg}} </li>
+    {% endfor %}
+
+    </ul>
+
+    {#<h2>Use the back button and reenter the data correctly</h2>#}
+
+
+    {% endblock %}

@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+    {% block title %}
+    <title>List of People</title>
+    {% endblock %}
+
+    {% block content %}
+
+        <p>
+            Results: {{result_list}}
+        </p>
+
+        <ul>
+            {% for person in result_list %}
+                <li>
+                    {{person[0]}}
+                    <ul>
+                        <li>id: {{person[1]}}</li>
+                        <li>email address: {{person[2]}}</li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}

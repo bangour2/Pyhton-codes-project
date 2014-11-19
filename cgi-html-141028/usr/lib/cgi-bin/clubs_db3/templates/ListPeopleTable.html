@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+    {% block title %}
+    <title>List of People</title>
+    {% endblock %}
+
+    {% block content %}
+
+
+        <table>
+            <tr><th>Name</th><th>Email</th></tr>
+            {% for person in result_list %}
+                <tr>
+                    <td>
+                        <a href="ListOnePerson.py?ident={{person[1]}}">
+                            {{person[0]}}
+                        </a>
+                    </td>
+                    <td>{{person[2]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}

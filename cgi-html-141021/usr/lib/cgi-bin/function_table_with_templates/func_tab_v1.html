@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Function Table</title>
+    <link href="/style1.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    {# This is a jinja2 comment
+
+        headers     list of headers, string
+        data        2D array of data to display
+    #}
+
+    <!-- this is an HTML comment  {{headers}} -->
+
+    <h1>Function Table</h1>
+
+    <table class="grid">
+        <tr>
+            {%for hdr in headers %}
+            <th>{{hdr}}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+            <tr>
+            {% for cell in row %}
+                <td>{{ "%.3f"|format(cell) }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </table>
+
+
+
+</body>
+</html>
